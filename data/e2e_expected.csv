@@ -1,0 +1,12 @@
+
+test_id,brand_id,title,content,content_type,expected_rule_ids
+E001,glowcare,Medical claim,"Our cream cures acne in seven days.",organic_post,RULE-001
+E002,glowcare,Neutral copy,"Our moisturizer supports healthy-looking skin.",organic_post,
+E003,glowcare,Missing disclosure,"Try our new moisturizer today!",paid_promo,RULE-002
+E004,glowcare,Pressure tactic,"Buy now before the offer ends!",organic_post,RULE-004
+E005,glowcare,Guaranteed result,"Guaranteed flawless skin after one use.",organic_post,RULE-005
+E006,glowcare,Competitor claim,"Brand X makes terrible skincare products.",organic_post,RULE-006
+E007,morrow-skin,Immediate promise,"Feel better overnight with our moisturizer.",organic_post,MOR-001
+E008,morrow-skin,Missing disclosure,"Discover our fragrance-free moisturizer.",paid_promo,MOR-002
+E009,morrow-skin,Approved wording,"A fragrance-free moisturizer for everyday care.",organic_post,
+E010,glowcare,Medical and pressure,"Cure acne now! Buy now!",organic_post,RULE-001|RULE-004

@@ -1,0 +1,21 @@
+id,text,risk_label,risk_category,source_group,split
+1,"Our cream cures acne in seven days.",1,medical_claim,medical_01,train
+2,"This moisturizer supports healthy-looking skin.",0,ordinary_copy,ordinary_01,train
+3,"Say goodbye to breakouts for good!",1,guarantee,guarantee_01,train
+4,"A lightweight moisturizer for your daily routine.",0,ordinary_copy,ordinary_02,train
+5,"Heal your skin condition with our new cream.",1,medical_claim,medical_02,train
+6,"Our formula helps keep skin feeling soft.",0,ordinary_copy,ordinary_03,train
+7,"Buy now before this amazing offer disappears!",1,pressure_tactic,pressure_01,train
+8,"Explore our collection of fragrance-free products.",0,ordinary_copy,ordinary_04,train
+9,"Guaranteed flawless skin after one use.",1,guarantee,guarantee_02,train
+10,"Enjoy a simple, fragrance-free skincare routine.",0,ordinary_copy,ordinary_05,train
+11,"Treat acne naturally with our moisturizer.",1,medical_claim,medical_03,train
+12,"Our moisturizer is designed for everyday use.",0,ordinary_copy,ordinary_06,train
+13,"Only today! Get your perfect skin solution.",1,pressure_tactic,pressure_02,train
+14,"A gentle addition to your daily skincare routine.",0,ordinary_copy,ordinary_07,train
+15,"Feel better overnight with our skincare cream.",1,guarantee,guarantee_03,train
+16,"Discover a moisturizer made for daily hydration.",0,ordinary_copy,ordinary_08,train
+17,"Our product treats skin conditions in three days.",1,medical_claim,medical_04,train
+18,"Keep your skincare routine simple and consistent.",0,ordinary_copy,ordinary_09,train
+19,"Hurry! Last chance to transform your skin forever.",1,pressure_tactic,pressure_03,train
+20,"A fragrance-free moisturizer for everyday care.",0,ordinary_copy,ordinary_10,train
