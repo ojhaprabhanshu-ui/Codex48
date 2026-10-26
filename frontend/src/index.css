@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-soft: var(--accent-soft);
+  --shadow-card: 0 5px 22px rgba(26, 34, 58, 0.035), 0 1px 2px rgba(26, 34, 58, 0.035);
+  --shadow-elevated: 0 18px 55px rgba(17, 24, 39, 0.18);
+}
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --canvas: #f7f8fb;
+  --surface: #ffffff;
+  --line: #e8eaf1;
+  --ink: #202638;
+  --secondary: #667085;
+  --muted: #98a0b1;
+  --accent: #6256dc;
+  --accent-dark: #5044ca;
+  --accent-soft: #efedff;
+  --chart-grid: #edf0f5;
+  --chart-label: #969eae;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #101521;
+  --surface: #171e2d;
+  --line: #2b3444;
+  --ink: #edf0f7;
+  --secondary: #a7b0c0;
+  --muted: #778196;
+  --accent: #a79cff;
+  --accent-dark: #c1baff;
+  --accent-soft: #292448;
+  --chart-grid: #2b3444;
+  --chart-label: #8c96a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--canvas);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: #fff;
+  background: #7067e6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.sidebar {
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(87, 79, 195, 0.2), transparent 42%),
+    #141b2c;
+  box-shadow: 9px 0 30px rgba(15, 23, 42, 0.045);
+}
+
+.sidebar-link {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 11px;
+  padding: 0 12px;
+  color: #a7afc0;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.055);
+  color: #f8fafc;
+}
+
+.sidebar-link-active {
+  background: rgba(128, 116, 245, 0.16);
+  color: #eeeaff;
+  box-shadow: inset 2px 0 #968bff;
+}
+
+.field-control {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  padding: 10px 12px;
+  color: var(--ink);
+  font-size: 12px;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.field-control::placeholder {
+  color: var(--muted);
+}
+
+.field-control:hover {
+  border-color: #cbd0dc;
+}
+
+.field-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 13%, transparent);
+  outline: none;
+}
+
+.field-control:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
