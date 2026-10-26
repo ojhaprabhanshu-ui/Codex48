@@ -17,7 +17,7 @@ const primaryLinks = [
 ]
 
 const moreLinks = [
-  { label: 'Review queue', icon: ClipboardCheck },
+  { to: '/reviews', label: 'Review queue', icon: ClipboardCheck },
   { label: 'History', icon: Clock3 },
   { label: 'Settings', icon: Settings2 },
 ]
@@ -25,7 +25,7 @@ const moreLinks = [
 function LinkList({ links, onNavigate, disabled = false }) {
   return (
     <div className="space-y-1">
-      {links.map(({ to, label, icon: Icon }) => disabled ? (
+      {links.map(({ to, label, icon: Icon }) => disabled || !to ? (
         <div key={label} className="sidebar-link cursor-not-allowed opacity-50" aria-disabled="true" title="Available in the next build stage">
           <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
           <span>{label}</span>
@@ -65,9 +65,9 @@ export default function Sidebar({ open, onClose, demoMode }) {
           <LinkList links={primaryLinks} onNavigate={onClose} />
           <div className="mb-2 mt-8 flex items-center justify-between px-3">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Manage</p>
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-500">Next stage</span>
+            <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-500">Workflow</span>
           </div>
-          <LinkList links={moreLinks} onNavigate={onClose} disabled />
+          <LinkList links={moreLinks} onNavigate={onClose} />
         </nav>
 
         <div className="mt-auto rounded-2xl border border-white/10 bg-white/[0.04] p-3.5">

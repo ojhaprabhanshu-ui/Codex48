@@ -5,6 +5,7 @@ import AppShell from './layouts/AppShell'
 const AnalyzerPage = lazy(() => import('./pages/AnalyzerPage'))
 const DashboardPage = lazy(() => import('./pages/DashboardPage'))
 const GuidelinesPage = lazy(() => import('./pages/GuidelinesPage'))
+const ReviewsPage = lazy(() => import('./pages/ReviewsPage'))
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="dashboard" element={<Suspense fallback={<PageLoading />}><DashboardPage /></Suspense>} />
         <Route path="analyze" element={<Suspense fallback={<PageLoading />}><AnalyzerPage /></Suspense>} />
         <Route path="guidelines" element={<Suspense fallback={<PageLoading />}><GuidelinesPage /></Suspense>} />
+        <Route path="reviews" element={<Suspense fallback={<PageLoading />}><ReviewsPage /></Suspense>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>
     </Routes>

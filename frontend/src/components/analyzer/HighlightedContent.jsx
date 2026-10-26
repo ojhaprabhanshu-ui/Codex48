@@ -1,7 +1,11 @@
 export default function HighlightedContent({ content = '', findings = [] }) {
   const spans = findings
+    .map((finding) => ({
+      start: finding.start_idx ?? finding.start,
+      end: finding.end_idx ?? finding.end,
+      severity: finding.severity || 'high',
+    }))
     .filter((finding) => Number.isInteger(finding.start) && Number.isInteger(finding.end) && finding.end > finding.start)
-    .map((finding) => ({ start: finding.start, end: finding.end, severity: finding.severity || 'high' }))
     .sort((a, b) => a.start - b.start)
 
   const segments = []
