@@ -1,0 +1,11 @@
+id,text,expected_risk_label,expected_category,notes
+H001,"This serum will eliminate acne permanently.",1,medical_claim,Unseen medical claim wording
+H002,"A moisturizer for your everyday skincare routine.",0,ordinary_copy,Ordinary product description
+H003,"Never struggle with pimples again after one use.",1,guarantee,Implicit guaranteed outcome
+H004,"Explore our fragrance-free daily moisturizer.",0,ordinary_copy,Neutral product wording
+H005,"Our cream heals acne in just five days.",1,medical_claim,Medical claim with time promise
+H006,"Shop our latest skincare collection.",0,ordinary_copy,Neutral call to action
+H007,"Get perfect skin guaranteed.",1,guarantee,Explicit guarantee
+H008,"Hurry, this offer ends today!",1,pressure_tactic,Pressure-based language
+H009,"A simple moisturizer for daily use.",0,ordinary_copy,Ordinary copy
+H010,"Say goodbye to breakouts for good.",1,guarantee,Implicit promise of permanent results

@@ -1,0 +1,105 @@
+
+{
+  "version": "1.0",
+  "brands": [
+    {
+      "brand_id": "glowcare",
+      "brand_name": "GlowCare",
+      "approved_facts": [
+        "Supports healthy-looking skin."
+      ],
+      "rules": [
+        {
+          "rule_id": "RULE-001",
+          "category": "prohibited_claim",
+          "title": "No cure or treatment claims",
+          "description": "Do not claim that products cure, treat, or heal acne or any skin condition.",
+          "severity": "high",
+          "check_method": "deterministic",
+          "active": true
+        },
+        {
+          "rule_id": "RULE-002",
+          "category": "disclosure",
+          "title": "Disclose paid promotion",
+          "description": "Paid promotional content must include #ad or #sponsored.",
+          "severity": "high",
+          "check_method": "deterministic",
+          "active": true
+        },
+        {
+          "rule_id": "RULE-003",
+          "category": "approved_facts",
+          "title": "Use approved product facts",
+          "description": "Product claims must be supported by approved brand facts; unverified numerical or time-based claims must be flagged for review.",
+          "severity": "medium",
+          "check_method": "contextual",
+          "active": true
+        },
+        {
+          "rule_id": "RULE-004",
+          "category": "tone",
+          "title": "Avoid pressure tactics",
+          "description": "Use informative, respectful wording. Avoid pressure tactics such as buy now, last chance, only today, or hurry.",
+          "severity": "medium",
+          "check_method": "deterministic",
+          "active": true
+        },
+        {
+          "rule_id": "RULE-005",
+          "category": "guarantee",
+          "title": "No guaranteed results",
+          "description": "Do not guarantee results or promise a specific outcome.",
+          "severity": "high",
+          "check_method": "contextual",
+          "active": true
+        },
+        {
+          "rule_id": "RULE-006",
+          "category": "comparative",
+          "title": "No competitor disparagement",
+          "description": "Do not disparage competitors by name.",
+          "severity": "medium",
+          "check_method": "contextual",
+          "active": true
+        }
+      ]
+    },
+    {
+      "brand_id": "morrow-skin",
+      "brand_name": "Morrow Skin",
+      "approved_facts": [
+        "Fragrance-free moisturizer."
+      ],
+      "rules": [
+        {
+          "rule_id": "MOR-001",
+          "category": "claims",
+          "title": "Avoid immediate-result promises",
+          "description": "Do not promise overnight or immediate product results.",
+          "severity": "high",
+          "check_method": "deterministic",
+          "active": true
+        },
+        {
+          "rule_id": "MOR-002",
+          "category": "disclosure",
+          "title": "Disclose paid partnerships",
+          "description": "Paid partnership content must include #ad or #sponsored.",
+          "severity": "high",
+          "check_method": "deterministic",
+          "active": true
+        },
+        {
+          "rule_id": "MOR-003",
+          "category": "approved_facts",
+          "title": "Use approved product wording",
+          "description": "The approved product fact is fragrance-free moisturizer. Other factual claims should be verified before approval.",
+          "severity": "medium",
+          "check_method": "contextual",
+          "active": true
+        }
+      ]
+    }
+  ]
+}
