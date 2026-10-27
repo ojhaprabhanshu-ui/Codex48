@@ -94,6 +94,7 @@ export default function DashboardPage() {
   const total = submissions.length
   const pending = submissions.filter((item) => item.status === 'pending_review').length
   const approved = submissions.filter((item) => item.status === 'approved' || item.review_decision === 'approve').length
+  const rejected = submissions.filter((item) => item.status === 'rejected' || item.review_decision === 'reject').length
   const flagged = submissions.filter((item) => Number(item.findings_count ?? item.findings?.length ?? 0) > 0).length
   const trend = useMemo(() => makeTrend(submissions), [submissions])
   const hasTrend = trend.some((point) => point.submissions > 0)
@@ -104,26 +105,23 @@ export default function DashboardPage() {
         eyebrow="Brand compliance overview"
         title="Welcome back."
         description={'A clear view of content checks and review activity for ' + (activeBrand?.name || 'your active brand') + '.'}
-        action={
-          <Link to="/analyze" className="inline-flex h-10 items-center gap-2 rounded-xl bg-accent px-4 text-xs font-semibold text-white shadow-sm shadow-indigo-900/10 transition hover:bg-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-            <Plus size={15} aria-hidden="true" /> Analyze new content
-          </Link>
-        }
+        action={<div className="flex flex-wrap gap-2"><Link to="/analyze" className="inline-flex h-10 items-center gap-2 rounded-xl bg-accent px-4 text-xs font-semibold text-white shadow-sm shadow-indigo-900/10 transition hover:bg-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"><Plus size={15} aria-hidden="true" /> Analyze new content</Link><Link to="/reviews" className="inline-flex h-10 items-center gap-2 rounded-xl border border-line bg-surface px-3.5 text-xs font-semibold text-secondary hover:bg-canvas"><Clock3 size={14} aria-hidden="true" /> Review queue</Link></div>}
       />
 
       {USE_MOCK_API && (
-        <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-950">
-          <Sparkles size={15} className="mt-0.5 shrink-0 text-amber-700" aria-hidden="true" />
+        <div className="notice-warning mb-5 flex items-start gap-2.5 rounded-2xl border px-4 py-3 text-xs leading-5">
+          <Sparkles size={15} className="notice-warning-strong mt-0.5 shrink-0" aria-hidden="true" />
           <p><strong>Development sample data.</strong> The figures and recent records below are illustrative fixtures, not live compliance metrics.</p>
         </div>
       )}
 
       {error && <div className="mb-5"><ErrorState message={error} onRetry={load} /></div>}
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <StatCard label="Total submissions" value={loading ? '—' : total} note={USE_MOCK_API ? 'Development sample records' : 'Returned by the submissions API'} icon={FileCheck2} tone="violet" />
         <StatCard label="Pending reviews" value={loading ? '—' : pending} note="Awaiting a human decision" icon={Clock3} tone="amber" />
         <StatCard label="Approved" value={loading ? '—' : approved} note="Confirmed by a reviewer" icon={CheckCircle2} tone="green" />
+        <StatCard label="Rejected" value={loading ? '—' : rejected} note="Recorded human decisions" icon={ShieldAlert} tone="rose" />
         <StatCard label="With findings" value={loading ? '—' : flagged} note="One or more reported findings" icon={ShieldAlert} tone="rose" />
       </div>
 
@@ -160,18 +158,18 @@ export default function DashboardPage() {
           )}
         </section>
 
-        <section className="relative overflow-hidden rounded-2xl bg-slate-950 p-6 text-white shadow-card">
-          <div className="absolute -right-12 -top-16 h-48 w-48 rounded-full bg-indigo-500/20 blur-3xl" aria-hidden="true" />
+        <section className="callout-panel relative overflow-hidden rounded-2xl border border-line p-6 shadow-card">
+          <div className="absolute -right-12 -top-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
           <div className="relative">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.06] px-2.5 py-1 text-[10px] font-medium text-indigo-100">
+            <span className="callout-badge inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium text-accent">
               <Sparkles size={12} aria-hidden="true" /> Ready for a review
             </span>
             <h2 className="mt-5 max-w-xs text-[22px] font-semibold leading-7 tracking-[-0.03em]">Make the next post your most confident one.</h2>
-            <p className="mt-2 max-w-xs text-xs leading-5 text-slate-300">Check your draft against the active brand’s guidelines before it goes to review.</p>
-            <Link to="/analyze" className="mt-6 inline-flex h-10 items-center gap-2 rounded-xl bg-white px-3.5 text-xs font-semibold text-slate-950 transition hover:bg-indigo-50">
+            <p className="callout-secondary mt-2 max-w-xs text-xs leading-5">Check your draft against the active brand’s guidelines before it goes to review.</p>
+            <Link to="/analyze" className="mt-6 inline-flex h-10 items-center gap-2 rounded-xl bg-surface px-3.5 text-xs font-semibold text-ink transition hover:bg-canvas">
               <FileSearch2 size={15} aria-hidden="true" /> Start a content check <ArrowRight size={14} aria-hidden="true" />
             </Link>
-            <Link to="/guidelines" className="mt-4 flex items-center gap-1.5 text-[11px] font-medium text-slate-300 hover:text-white">
+            <Link to="/guidelines" className="callout-secondary mt-4 flex items-center gap-1.5 text-[11px] font-medium hover:text-accent">
               Browse brand guidelines <ArrowRight size={12} aria-hidden="true" />
             </Link>
           </div>
@@ -197,7 +195,7 @@ export default function DashboardPage() {
               <tbody className="divide-y divide-line">
                 {submissions.slice(0, 5).map((item) => (
                   <tr key={item.id} className="transition hover:bg-canvas/50">
-                    <td className="px-6 py-3.5"><p className="text-xs font-semibold text-ink">{item.title || 'Untitled submission'}</p><p className="mt-1 text-[10px] text-muted">{item.id}</p></td>
+                    <td className="px-6 py-3.5"><Link to={'/history/' + encodeURIComponent(item.id)} className="text-xs font-semibold text-ink hover:text-accent">{item.title || 'Untitled submission'}</Link><p className="mt-1 text-[10px] text-muted">{item.id}</p></td>
                     <td className="px-4 py-3.5 text-xs text-secondary">{item.platform || item.content_type || '—'}</td>
                     <td className="px-4 py-3.5"><span className="text-xs font-medium text-ink">{item.findings_count ?? item.findings?.length ?? 0}</span></td>
                     <td className="px-4 py-3.5"><StatusBadge status={item.status} /></td>

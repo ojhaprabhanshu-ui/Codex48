@@ -10,8 +10,8 @@ export default function AppShell() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
       {USE_MOCK_API && (
-        <div className="sticky top-0 z-[60] flex min-h-8 items-center justify-center gap-2 bg-amber-100 px-2 py-1.5 text-center text-[9px] font-medium leading-4 text-amber-950 sm:text-[11px]">
-          <span className="shrink-0 whitespace-nowrap rounded bg-amber-300/70 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[9px]">Demo data</span>
+        <div className="demo-ribbon notice-warning sticky top-0 z-[60] flex min-h-8 items-center justify-center gap-2 border-b px-2 py-1.5 text-center text-[9px] font-medium leading-4 sm:text-[11px]">
+          <span className="notice-warning-strong shrink-0 whitespace-nowrap rounded bg-canvas px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] sm:text-[9px]">Demo data</span>
           <span className="whitespace-nowrap sm:hidden">Fixtures active · no ML or Gemini</span>
           <span className="hidden sm:inline">Development fixtures are active. Rule checks are illustrative; ML and Gemini are not called.</span>
         </div>

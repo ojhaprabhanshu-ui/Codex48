@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
   ArrowDownRight,
@@ -23,9 +24,11 @@ import ContentEditor from '../components/analyzer/ContentEditor'
 import FindingCard from '../components/analyzer/FindingCard'
 import HighlightedContent from '../components/analyzer/HighlightedContent'
 import RiskIndicator from '../components/analyzer/RiskIndicator'
+import MediaUploadField from '../components/analyzer/MediaUploadField'
+import PlatformSelect from '../components/analyzer/PlatformSelect'
 import { useAppContext } from '../context/useAppContext'
 import { samplePromotionalContent } from '../data/mockData'
-import { createSubmission } from '../services/submissionsApi'
+import { createSubmission, updateSubmission } from '../services/submissionsApi'
 import { analyzeSubmission } from '../services/analysisApi'
 import { getApiErrorMessage, USE_MOCK_API } from '../services/apiClient'
 
@@ -89,6 +92,8 @@ export default function AnalyzerPage() {
   const [coldStart, setColdStart] = useState(false)
   const [rewrite, setRewrite] = useState('')
   const [selectedCitation, setSelectedCitation] = useState(null)
+  const [hasImage, setHasImage] = useState(false)
+  const [mediaResetKey, setMediaResetKey] = useState(0)
 
   const findings = analysis?.findings || EMPTY_FINDINGS
   const ruleFindings = analysis?.ruleFindings || []
@@ -122,24 +127,29 @@ export default function AnalyzerPage() {
     setValidationError('')
     setError('')
     setAnalysis(null)
-    setSubmission(null)
+    const isRevision = overrideContent !== undefined && Boolean(submission?.id)
+    if (!isRevision) setSubmission(null)
     setLoading(true)
     setColdStart(false)
     const coldStartTimer = window.setTimeout(() => setColdStart(true), 5000)
 
     try {
-      const savedSubmission = await createSubmission({
+      const payload = {
         brand_id: activeBrandId,
         title: title.trim(),
         content: text,
         content_type: contentType,
         platform: platform || null,
-      })
+      }
+      const savedSubmission = isRevision
+        ? await updateSubmission(submission.id, payload)
+        : await createSubmission(payload)
       const id = readSubmissionId(savedSubmission)
       if (!id) throw new Error('The API saved the request without returning a submission ID.')
       setSubmission({ ...savedSubmission, id, content: text })
       const response = await analyzeSubmission(id)
       const result = normalizeAnalysis(response)
+      setSubmission((current) => current ? { ...current, status: 'analyzed', analysis: result, analysis_history: response.analysis_history || current.analysis_history } : current)
       setAnalysis(result)
       setRewrite(result.suggested_rewrite || result.suggested_correction || text)
       toast.success(USE_MOCK_API ? 'Demo rule check complete' : 'Analysis complete')
@@ -164,6 +174,8 @@ export default function AnalyzerPage() {
     setError('')
     setValidationError('')
     setRewrite('')
+    setHasImage(false)
+    setMediaResetKey((current) => current + 1)
   }
 
   function loadExample() {
@@ -233,6 +245,16 @@ export default function AnalyzerPage() {
                 <span>Checks use the content exactly as entered.</span>
                 <span id="content-counter" aria-live="polite">{content.length.toLocaleString()} / 5,000</span>
               </div>
+              <div className="mt-5">
+                <div className="mb-3">
+                  <h3 className="text-xs font-semibold text-ink">Promotional image <span className="font-normal text-muted">Optional</span></h3>
+                  <p className="mt-1 text-[10px] leading-4 text-secondary">Select an image to preview it. Image analysis is not connected yet.</p>
+                </div>
+                <div className="max-w-sm">
+                  <MediaUploadField key={'image-' + mediaResetKey} type="image" onFileChange={(file) => setHasImage(Boolean(file))} />
+                </div>
+                {hasImage && <p className="notice-warning mt-3 rounded-xl border px-3 py-2.5 text-[10px] leading-4" role="status"><strong>Image selected, text only.</strong> The selected image stays in this browser and will not be submitted or analyzed.</p>}
+              </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -244,15 +266,12 @@ export default function AnalyzerPage() {
               </div>
               <div>
                 <FieldLabel htmlFor="platform" optional>Platform</FieldLabel>
-                <select id="platform" value={platform} onChange={(event) => setPlatform(event.target.value)} className="field-control h-11">
-                  <option value="">Choose a platform</option>
-                  {platforms.map((item) => <option key={item} value={item}>{item}</option>)}
-                </select>
+                <PlatformSelect id="platform" value={platform} onChange={setPlatform} options={platforms} />
               </div>
             </div>
 
             {(validationError || error) && (
-              <div className="rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-3 text-xs leading-5 text-rose-800" role="alert">
+              <div className="notice-error rounded-xl border px-3.5 py-3 text-xs leading-5" role="alert">
                 {validationError || error}
               </div>
             )}
@@ -263,7 +282,7 @@ export default function AnalyzerPage() {
               </button>
               <button type="submit" disabled={loading || brands.length === 0} className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-accent px-4 text-xs font-semibold text-white shadow-sm shadow-indigo-900/10 transition hover:bg-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60">
                 {loading ? <LoaderCircle size={15} className="animate-spin" aria-hidden="true" /> : <WandSparkles size={15} aria-hidden="true" />}
-                {loading ? 'Checking content…' : 'Analyze content'}
+                {loading ? 'Checking content…' : hasImage ? 'Analyze text only' : 'Analyze content'}
                 {!loading && <ArrowRight size={14} aria-hidden="true" />}
               </button>
             </div>
@@ -297,14 +316,15 @@ export default function AnalyzerPage() {
                   <h2 id="result-heading" className="text-base font-semibold tracking-tight text-ink">{submission?.title || title}</h2>
                   <p className="mt-1 text-[10px] text-muted">{submission?.id ? 'Submission ' + submission.id : 'Submission created'} · {activeBrand?.name || 'Brand'}</p>
                 </div>
-                <StatusBadge status={analysis.status || 'analyzed'}>{USE_MOCK_API ? 'Demo rules checked' : (analysis.status || 'Analyzed')}</StatusBadge>
+                <div className="flex flex-wrap items-center gap-2"><StatusBadge status={analysis.status || 'analyzed'}>{USE_MOCK_API ? 'Demo rules checked' : (analysis.status || 'Analyzed')}</StatusBadge>{submission?.id && <Link to={'/analysis/' + encodeURIComponent(submission.id)} className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-line px-2.5 text-[10px] font-semibold text-secondary hover:bg-canvas">Saved details <ArrowRight size={12} /></Link>}</div>
               </div>
 
               {USE_MOCK_API && (
-                <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-3 text-xs leading-5 text-amber-950">
+                <div className="notice-warning mt-4 rounded-xl border px-3.5 py-3 text-xs leading-5">
                   <strong>Fixture analysis.</strong> Only the sample deterministic rules ran. No ML classifier or Gemini response was generated.
                 </div>
               )}
+              {hasImage && <div className="notice-warning mt-3 rounded-xl border px-3.5 py-3 text-xs leading-5" role="status"><strong>Text-only analysis complete.</strong> The selected image stayed in the browser and was not included in this analysis.</div>}
 
               <div className="mt-4 rounded-2xl border border-line bg-canvas p-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -321,7 +341,7 @@ export default function AnalyzerPage() {
               {Array.isArray(analysis.warnings) && analysis.warnings.length > 0 && (
                 <div className="mt-4 space-y-2">
                   {analysis.warnings.map((warning, index) => (
-                    <div key={warning.code || index} className="rounded-xl border border-sky-200 bg-sky-50 px-3.5 py-3 text-xs leading-5 text-sky-900">
+                    <div key={warning.code || index} className="notice-info rounded-xl border px-3.5 py-3 text-xs leading-5">
                       <strong>{warning.code === 'MOCK_AI_UNAVAILABLE' ? 'AI services not called.' : 'Analysis warning.'}</strong> {warning.message || 'Part of the analysis could not be completed.'}
                     </div>
                   ))}
@@ -339,7 +359,7 @@ export default function AnalyzerPage() {
                   {ruleFindings.length ? (
                     <div className="space-y-3">{ruleFindings.map((finding, index) => <FindingCard key={finding.id || index} finding={finding} onViewGuideline={setSelectedCitation} />)}</div>
                   ) : (
-                    <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-3 text-xs leading-5 text-emerald-900">No deterministic rule findings were returned.</div>
+                    <div className="notice-success rounded-xl border px-3.5 py-3 text-xs leading-5">No deterministic rule findings were returned.</div>
                   )}
                 </section>
 

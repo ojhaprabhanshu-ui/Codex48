@@ -17,7 +17,7 @@ export default function Navbar({ onMenuClick, demoMode }) {
   const { brands, activeBrand, activeBrandId, setActiveBrandId, theme, toggleTheme } = useAppContext()
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [brandMenuOpen, setBrandMenuOpen] = useState(false)
-  const title = pageTitles[pathname] || 'BrandProof'
+  const title = pageTitles[pathname] || (pathname.startsWith('/analysis/') ? 'Analysis details' : pathname.startsWith('/reviews/') ? 'Review details' : pathname.startsWith('/history/') ? 'Submission details' : 'BrandProof')
 
   return (
     <header className={'sticky z-30 border-b border-line bg-surface/90 backdrop-blur-xl ' + (demoMode ? 'top-8' : 'top-0')}>
@@ -41,7 +41,7 @@ export default function Navbar({ onMenuClick, demoMode }) {
               aria-haspopup="listbox"
               aria-expanded={brandMenuOpen}
             >
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-amber-100 text-[9px] font-bold text-amber-800">{activeBrand?.initials || 'BP'}</span>
+              <span className="brand-chip grid h-7 w-7 shrink-0 place-items-center rounded-lg text-[9px] font-bold">{activeBrand?.initials || 'BP'}</span>
               <span className="hidden min-w-0 sm:block">
                 <span className="block truncate text-[11px] font-semibold text-ink">{activeBrand?.name || 'Select brand'}</span>
                 <span className="mt-0.5 block text-[9px] text-muted">Active brand</span>
@@ -59,7 +59,7 @@ export default function Navbar({ onMenuClick, demoMode }) {
                     onClick={() => { setActiveBrandId(brand.id); setBrandMenuOpen(false) }}
                     className="flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left hover:bg-canvas"
                   >
-                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-100 text-[9px] font-bold text-amber-800">{brand.initials || brand.name.slice(0, 2).toUpperCase()}</span>
+                    <span className="brand-chip grid h-8 w-8 place-items-center rounded-lg text-[9px] font-bold">{brand.initials || brand.name.slice(0, 2).toUpperCase()}</span>
                     <span className="min-w-0">
                       <span className="block truncate text-xs font-semibold text-ink">{brand.name}</span>
                       <span className="block text-[10px] text-muted">Brand workspace</span>
@@ -88,7 +88,7 @@ export default function Navbar({ onMenuClick, demoMode }) {
           </button>
 
           <div className="ml-1 hidden items-center gap-2 border-l border-line pl-3 sm:flex">
-            <div className="grid h-8 w-8 place-items-center rounded-full bg-slate-200 text-[10px] font-semibold text-slate-700">BP</div>
+            <div className="avatar-chip grid h-8 w-8 place-items-center rounded-full text-[10px] font-semibold">BP</div>
             <span className="hidden text-[11px] font-medium text-ink lg:block">Brand team</span>
           </div>
         </div>

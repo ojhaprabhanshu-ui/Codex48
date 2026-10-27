@@ -17,20 +17,15 @@ const primaryLinks = [
 ]
 
 const moreLinks = [
-  { label: 'Review queue', icon: ClipboardCheck },
-  { label: 'History', icon: Clock3 },
-  { label: 'Settings', icon: Settings2 },
+  { to: '/reviews', label: 'Review queue', icon: ClipboardCheck },
+  { to: '/history', label: 'History', icon: Clock3 },
+  { to: '/settings', label: 'Settings', icon: Settings2 },
 ]
 
-function LinkList({ links, onNavigate, disabled = false }) {
+function LinkList({ links, onNavigate }) {
   return (
     <div className="space-y-1">
-      {links.map(({ to, label, icon: Icon }) => disabled ? (
-        <div key={label} className="sidebar-link cursor-not-allowed opacity-50" aria-disabled="true" title="Available in the next build stage">
-          <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
-          <span>{label}</span>
-        </div>
-      ) : (
+      {links.map(({ to, label, icon: Icon }) => (
         <NavLink key={to} to={to} onClick={onNavigate} className={({ isActive }) => 'sidebar-link ' + (isActive ? 'sidebar-link-active' : '')}>
           <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
           <span>{label}</span>
@@ -51,33 +46,32 @@ export default function Sidebar({ open, onClose, demoMode }) {
               <span className="text-[13px] font-bold tracking-[-0.08em]">BP</span>
             </div>
             <div>
-              <span className="block text-[16px] font-semibold tracking-[-0.03em] text-white">BrandProof</span>
-              <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-[0.17em] text-slate-400">Compliance studio</span>
+              <span className="block text-[16px] font-semibold tracking-[-0.03em] text-ink">BrandProof</span>
+              <span className="sidebar-brand-subtitle mt-0.5 block text-[10px] font-medium uppercase tracking-[0.17em]">Compliance studio</span>
             </div>
           </NavLink>
-          <button type="button" onClick={onClose} className="grid h-8 w-8 place-items-center rounded-lg text-slate-400 hover:bg-white/10 hover:text-white md:hidden" aria-label="Close menu">
+          <button type="button" onClick={onClose} className="grid h-8 w-8 place-items-center rounded-lg text-secondary hover:bg-canvas hover:text-ink md:hidden" aria-label="Close menu">
             <ChevronLeft size={17} aria-hidden="true" />
           </button>
         </div>
 
-        <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Workspace</p>
+        <p className="sidebar-label mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.16em]">Workspace</p>
         <nav aria-label="Primary navigation">
           <LinkList links={primaryLinks} onNavigate={onClose} />
           <div className="mb-2 mt-8 flex items-center justify-between px-3">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Manage</p>
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-500">Next stage</span>
+            <p className="sidebar-label text-[10px] font-semibold uppercase tracking-[0.16em]">Manage</p>
           </div>
-          <LinkList links={moreLinks} onNavigate={onClose} disabled />
+          <LinkList links={moreLinks} onNavigate={onClose} />
         </nav>
 
-        <div className="mt-auto rounded-2xl border border-white/10 bg-white/[0.04] p-3.5">
+        <div className="sidebar-footer mt-auto rounded-2xl border p-3.5">
           <div className="flex items-center gap-2.5">
-            <div className="grid h-8 w-8 place-items-center rounded-xl bg-indigo-400/15 text-indigo-200">
+            <div className="sidebar-footer-icon grid h-8 w-8 place-items-center rounded-xl">
               <BarChart3 size={15} aria-hidden="true" />
             </div>
             <div>
-              <p className="text-xs font-medium text-slate-200">CODEX48 workspace</p>
-              <p className="mt-0.5 text-[10px] text-slate-500">Brand checks, made clear.</p>
+              <p className="sidebar-footer-title text-xs font-medium">CODEX48 workspace</p>
+              <p className="sidebar-footer-copy mt-0.5 text-[10px]">Brand checks, made clear.</p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ export default function RiskIndicator({ risk }) {
   if (!risk) {
     return (
       <div className="flex items-center gap-3 rounded-2xl border border-line bg-canvas p-4">
-        <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-500">
+        <div className="tone-neutral grid h-10 w-10 place-items-center rounded-xl">
           <ShieldQuestion size={18} aria-hidden="true" />
         </div>
         <div>
@@ -20,7 +20,7 @@ export default function RiskIndicator({ risk }) {
   const isHigh = normalized === 'high' || normalized === '1'
   const isLow = normalized === 'low' || normalized === '0'
   const Icon = isHigh ? ShieldAlert : isLow ? ShieldCheck : ShieldQuestion
-  const tone = isHigh ? 'text-rose-700 bg-rose-50' : isLow ? 'text-emerald-700 bg-emerald-50' : 'text-amber-700 bg-amber-50'
+  const tone = isHigh ? 'tone-rose' : isLow ? 'tone-green' : 'tone-amber'
 
   return (
     <div className="flex items-center gap-3 rounded-2xl border border-line bg-canvas p-4">

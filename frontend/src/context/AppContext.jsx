@@ -11,7 +11,9 @@ export function AppProvider({ children }) {
   )
   const activeBrandIdRef = useRef(activeBrandId)
   const [theme, setTheme] = useState(
-    () => window.localStorage.getItem('brandproof.theme') || 'light',
+    () => {
+      try { return window.localStorage.getItem('brandproof.theme') === 'dark' ? 'dark' : 'light' } catch { return 'light' }
+    },
   )
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
-    window.localStorage.setItem('brandproof.theme', theme)
+    try { window.localStorage.setItem('brandproof.theme', theme) } catch { /* The selected theme still applies for this session. */ }
   }, [theme])
 
   const activeBrand = brands.find((brand) => String(brand.id) === String(activeBrandId)) || brands[0] || null

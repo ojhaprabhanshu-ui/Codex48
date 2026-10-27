@@ -3,6 +3,8 @@ import {
   createSubmission as createMockSubmission,
   getSubmission as getMockSubmission,
   getSubmissions as getMockSubmissions,
+  submitForReview as submitMockForReview,
+  updateSubmission as updateMockSubmission,
 } from './mockAdapter'
 
 export async function getSubmissions(params) {
@@ -20,5 +22,17 @@ export async function getSubmission(id) {
 export async function createSubmission(payload) {
   if (USE_MOCK_API) return createMockSubmission(payload)
   const response = await apiClient.post('/submissions', payload)
+  return response.data
+}
+
+export async function updateSubmission(id, payload) {
+  if (USE_MOCK_API) return updateMockSubmission(id, payload)
+  const response = await apiClient.put('/submissions/' + encodeURIComponent(id), payload)
+  return response.data
+}
+
+export async function submitForReview(id) {
+  if (USE_MOCK_API) return submitMockForReview(id)
+  const response = await apiClient.post('/submissions/' + encodeURIComponent(id) + '/submit-for-review')
   return response.data
 }

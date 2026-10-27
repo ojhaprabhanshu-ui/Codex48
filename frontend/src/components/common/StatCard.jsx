@@ -1,9 +1,9 @@
 export default function StatCard({ label, value, note, icon: Icon, tone = 'violet' }) {
   const tones = {
-    violet: 'bg-violet-50 text-violet-700',
-    amber: 'bg-amber-50 text-amber-700',
-    green: 'bg-emerald-50 text-emerald-700',
-    rose: 'bg-rose-50 text-rose-700',
+    violet: 'tone-violet',
+    amber: 'tone-amber',
+    green: 'tone-green',
+    rose: 'tone-rose',
   }
   return (
     <article className="rounded-2xl border border-line bg-surface p-5 shadow-card sm:p-5">

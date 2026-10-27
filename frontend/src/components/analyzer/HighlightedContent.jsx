@@ -17,7 +17,7 @@ export default function HighlightedContent({ content = '', findings = [] }) {
   return (
     <p className="whitespace-pre-wrap text-sm leading-7 text-ink">
       {segments.map((segment, index) => segment.severity
-        ? <mark key={index} className={'rounded px-0.5 ' + (segment.severity === 'high' ? 'bg-rose-100 text-rose-900' : 'bg-amber-100 text-amber-900')}>{segment.text}</mark>
+        ? <mark key={index} className={'rounded px-0.5 ' + (segment.severity === 'high' ? 'highlight-high' : 'highlight-medium')}>{segment.text}</mark>
         : <span key={index}>{segment.text}</span>)}
     </p>
   )

@@ -1,10 +1,10 @@
 import { ArrowUpRight, BookOpenText, CircleAlert } from 'lucide-react'
 
 const severityStyle = {
-  high: 'border-rose-200 bg-rose-50 text-rose-800',
-  medium: 'border-amber-200 bg-amber-50 text-amber-800',
-  low: 'border-sky-200 bg-sky-50 text-sky-800',
-  info: 'border-sky-200 bg-sky-50 text-sky-800',
+  high: 'severity-high',
+  medium: 'severity-medium',
+  low: 'severity-low',
+  info: 'severity-info',
 }
 
 export default function FindingCard({ finding, onViewGuideline }) {
