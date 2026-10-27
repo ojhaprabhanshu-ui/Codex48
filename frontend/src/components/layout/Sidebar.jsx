@@ -18,28 +18,14 @@ const primaryLinks = [
 
 const moreLinks = [
   { to: '/reviews', label: 'Review queue', icon: ClipboardCheck },
-<<<<<<< HEAD
   { to: '/history', label: 'History', icon: Clock3 },
   { to: '/settings', label: 'Settings', icon: Settings2 },
-=======
-  { label: 'History', icon: Clock3 },
-  { label: 'Settings', icon: Settings2 },
->>>>>>> 15a6666f3533020822919ab70b94f38309e74d69
 ]
 
 function LinkList({ links, onNavigate }) {
   return (
     <div className="space-y-1">
-<<<<<<< HEAD
       {links.map(({ to, label, icon: Icon }) => (
-=======
-      {links.map(({ to, label, icon: Icon }) => disabled || !to ? (
-        <div key={label} className="sidebar-link cursor-not-allowed opacity-50" aria-disabled="true" title="Available in the next build stage">
-          <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
-          <span>{label}</span>
-        </div>
-      ) : (
->>>>>>> 15a6666f3533020822919ab70b94f38309e74d69
         <NavLink key={to} to={to} onClick={onNavigate} className={({ isActive }) => 'sidebar-link ' + (isActive ? 'sidebar-link-active' : '')}>
           <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
           <span>{label}</span>
@@ -73,12 +59,7 @@ export default function Sidebar({ open, onClose, demoMode }) {
         <nav aria-label="Primary navigation">
           <LinkList links={primaryLinks} onNavigate={onClose} />
           <div className="mb-2 mt-8 flex items-center justify-between px-3">
-<<<<<<< HEAD
             <p className="sidebar-label text-[10px] font-semibold uppercase tracking-[0.16em]">Manage</p>
-=======
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Manage</p>
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-500">Workflow</span>
->>>>>>> 15a6666f3533020822919ab70b94f38309e74d69
           </div>
           <LinkList links={moreLinks} onNavigate={onClose} />
         </nav>
