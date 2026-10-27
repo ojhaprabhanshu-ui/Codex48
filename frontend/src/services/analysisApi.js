@@ -9,6 +9,12 @@ export async function analyzeSubmission(submissionId) {
 
 export async function getAnalysis(analysisId) {
   if (USE_MOCK_API) return getMockAnalysis(analysisId)
-  const response = await apiClient.get('/analyses/' + encodeURIComponent(analysisId))
+  const response = await apiClient.get('/submissions/' + encodeURIComponent(analysisId))
+  return response.data
+}
+
+export async function submitSubmission(submissionId) {
+  if (USE_MOCK_API) return getMockAnalysis(submissionId)
+  const response = await apiClient.post('/submissions/' + encodeURIComponent(submissionId) + '/submit')
   return response.data
 }

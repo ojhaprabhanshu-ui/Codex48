@@ -53,7 +53,7 @@ function normalizeAnalysis(response) {
   const geminiFindings = Array.isArray(result?.gemini_findings)
     ? result.gemini_findings
     : allFindings.filter((finding) => ['gemini', 'llm'].includes(String(finding.source || '').toLowerCase()))
-  return { ...result, findings: allFindings, ruleFindings, geminiFindings }
+  return { ...result, ml_risk: result?.ml_risk ?? result?.ml_risk_json ?? null, findings: allFindings, ruleFindings, geminiFindings }
 }
 
 function FieldLabel({ htmlFor, children, optional }) {
