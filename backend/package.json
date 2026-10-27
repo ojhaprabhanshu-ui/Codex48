@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
@@ -14,9 +16,11 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "pg": "^8.13.1"
+    "pg": "^8.23.1"
   },
-  "devDependencies": { "node-pg-migrate": "^7.9.0" }
+  "devDependencies": {
+    "node-pg-migrate": "^7.9.0"
+  }
 }

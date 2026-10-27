@@ -33,6 +33,6 @@ export async function updateSubmission(id, payload) {
 
 export async function submitForReview(id) {
   if (USE_MOCK_API) return submitMockForReview(id)
-  const response = await apiClient.post('/submissions/' + encodeURIComponent(id) + '/submit-for-review')
+  const response = await apiClient.post('/submissions/' + encodeURIComponent(id) + '/submit')
   return response.data
 }
