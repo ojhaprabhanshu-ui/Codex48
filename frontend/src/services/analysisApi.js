@@ -3,7 +3,7 @@ import { analyzeSubmission as analyzeMockSubmission, getAnalysis as getMockAnaly
 
 export async function analyzeSubmission(submissionId) {
   if (USE_MOCK_API) return analyzeMockSubmission(submissionId)
-  const response = await apiClient.post('/submissions/' + encodeURIComponent(submissionId) + '/analyze')
+  const response = await apiClient.post('/submissions/' + encodeURIComponent(submissionId) + '/analyze', undefined, { timeout: 270000 })
   return response.data
 }
 

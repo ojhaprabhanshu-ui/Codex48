@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
@@ -13,10 +15,13 @@
     "test": "node --test"
   },
   "dependencies": {
+    "@google/genai": "^2.31.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.1"
   },
-  "devDependencies": { "node-pg-migrate": "^7.9.0" }
+  "devDependencies": {
+    "node-pg-migrate": "^7.9.0"
+  }
 }
