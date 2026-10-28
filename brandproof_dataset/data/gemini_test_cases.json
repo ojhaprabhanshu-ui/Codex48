@@ -1,0 +1,3675 @@
+[
+  {
+    "sample_id": "BP001",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream supports healthy-looking skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP002",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream cures acne in 7 days! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "cures acne in 7 days",
+          "reason": "'cures acne in 7 days' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP003",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream supports healthy-looking skin.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP004",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream cures acne in 7 days!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "cures acne in 7 days",
+          "reason": "'cures acne in 7 days' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP005",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Discover our skincare range today! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [],
+      "needs_human_review": true
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP006",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Keeps skin looking fresh and healthy. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Keeps skin looking fresh and healthy",
+          "reason": "Loose paraphrase; 'keeps' and 'fresh' go beyond the approved wording."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP007",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Best moisturizer in India, trust me",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Best moisturizer in India",
+          "reason": "'Best moisturizer in India' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP008",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Chemical-free and toxin-free, shop GlowCare",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Chemical-free and toxin-free",
+          "reason": "'Chemical-free and toxin-free' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP009",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Supports healthy skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Supports healthy skin",
+          "reason": "Drops 'looking'; may imply a stronger health claim than AF-001."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP010",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Guaranteed glowing skin in a week! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Guaranteed glowing skin in a week",
+          "reason": "'Guaranteed glowing skin in a week' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP011",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Morning routine with GlowCare cream ☀️",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Morning routine with GlowCare cream ☀️ #ad"
+  },
+  {
+    "sample_id": "BP012",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Use my code for 10% off GlowCare cream",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Use my code for 10% off GlowCare cream #ad"
+  },
+  {
+    "sample_id": "BP013",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "My daily moisturizer is lightweight and fragrance-free. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP014",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Loving how GlowCare supports healthy-looking skin every day 💧 #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP015",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Glow up with GlowCare ✨ #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Glow up",
+          "reason": "Marketing slang; likely not a factual claim but a reviewer should confirm."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP016",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Doctors recommend GlowCare for acne",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Doctors recommend GlowCare for acne",
+          "reason": "'Doctors recommend GlowCare for acne' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP017",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream cures acne overnight! 😍 #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "cures acne overnight",
+          "reason": "'cures acne overnight' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP018",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Loving my GlowCare cream! Lightweight and fragrance-free.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Loving my GlowCare cream! Lightweight and fragrance-free. #ad"
+  },
+  {
+    "sample_id": "BP019",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "GlowCare cream is on sale this weekend",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "GlowCare cream is on sale this weekend #ad"
+  },
+  {
+    "sample_id": "BP020",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Clean beauty at its best. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Clean beauty at its best",
+          "reason": "'Clean' has no agreed meaning and is not in the approved facts."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP021",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Sponsored by GlowCare: try the Daily Moisturizer",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Sponsored by GlowCare: try the Daily Moisturizer #ad"
+  },
+  {
+    "sample_id": "BP022",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Gifted by GlowCare, here's my routine",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Gifted by GlowCare, here's my routine #ad"
+  },
+  {
+    "sample_id": "BP023",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Helps your skin look healthy. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Helps your skin look healthy",
+          "reason": "Possible paraphrase of AF-001; reviewer confirms the meaning is unchanged."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP024",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Dermatologist-approved for sensitive skin #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Dermatologist-approved for sensitive skin",
+          "reason": "'Dermatologist-approved for sensitive skin' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP025",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "GlowCare cream + a good sleep = my weekend reset #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP026",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Shop GlowCare at glowcare.example. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP027",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream is basically skincare magic ✨ #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "skincare magic",
+          "reason": "Hyperbole; reviewer decides."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP028",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Gifted by GlowCare. Supports healthy-looking skin! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP029",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Goodbye breakouts forever 🙌 Grab yours today",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Goodbye breakouts forever",
+          "reason": "'Goodbye breakouts forever' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP030",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Quick tip: apply on damp skin. Supports healthy-looking skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP031",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "#ad Supports healthy-looking skin, and that is why it's in my routine.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP032",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Heals eczema fast, link in bio",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Heals eczema fast",
+          "reason": "'Heals eczema fast' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP033",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Reduces wrinkles by 50% in 2 weeks #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Reduces wrinkles by 50% in 2 weeks",
+          "reason": "'Reduces wrinkles by 50% in 2 weeks' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP034",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream removes dark spots completely #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "removes dark spots completely",
+          "reason": "'removes dark spots completely' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP035",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Zero side effects, 100% results, order today",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Zero side effects, 100% results",
+          "reason": "'Zero side effects, 100% results' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP036",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Say goodbye to breakouts forever #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Say goodbye to breakouts forever",
+          "reason": "'Say goodbye to breakouts forever' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP037",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "This cream is a miracle for scars, buy it",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "a miracle for scars",
+          "reason": "'a miracle for scars' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP038",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our cream cures acne in 7 days! Buy now!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "cures acne in 7 days",
+          "reason": "'cures acne in 7 days' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP039",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Partnered with GlowCare for this post. Supports healthy-looking skin.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Partnered with GlowCare for this post. Supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP040",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Check out GlowCare's new range! Use code GLOW10",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Check out GlowCare's new range! Use code GLOW10 #ad"
+  },
+  {
+    "sample_id": "BP041",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Repairs sun damage at the cellular level #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Repairs sun damage at the cellular level",
+          "reason": "'Repairs sun damage at the cellular level' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP042",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Clinically proven to erase wrinkles. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Clinically proven to erase wrinkles",
+          "reason": "'Clinically proven to erase wrinkles' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP043",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Dermatologist-tested. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Dermatologist-tested",
+          "reason": "Testing claim is not in the approved facts; may be missing from the fact list."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP044",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Guaranteed glowing skin in a week!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Guaranteed glowing skin in a week",
+          "reason": "'Guaranteed glowing skin in a week' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP045",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Boosts collagen permanently #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Boosts collagen permanently",
+          "reason": "'Boosts collagen permanently' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP046",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "My go-to for daily moisturizing, lightweight and fragrance-free #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP047",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Shop GlowCare today at glowcare.example",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Shop GlowCare today at glowcare.example #ad"
+  },
+  {
+    "sample_id": "BP048",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Lightweight, fragrance-free and suitable for daily use. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP049",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Results may vary, but my skin looks healthier. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "my skin looks healthier",
+          "reason": "Personal experience with a disclaimer; borderline."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP050",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "You'll love how your skin looks. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "You'll love how your skin looks",
+          "reason": "Vague outcome promise; reviewer decides if it is an unsupported claim."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP051",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Swipe up for GlowCare's Daily Moisturizer",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Swipe up for GlowCare's Daily Moisturizer #ad"
+  },
+  {
+    "sample_id": "BP052",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Skin feels amazing after using it. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Skin feels amazing after using it",
+          "reason": "Personal experience; may or may not count as a claim."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP053",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Doctors recommend GlowCare for acne #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Doctors recommend GlowCare for acne",
+          "reason": "'Doctors recommend GlowCare for acne' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP054",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Great for dry skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Great for dry skin",
+          "reason": "Suitability for a skin type is not an approved fact."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP055",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "New GlowCare moisturizer is here, link in bio",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "New GlowCare moisturizer is here, link in bio #ad"
+  },
+  {
+    "sample_id": "BP056",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Clinically proven to erase wrinkles. Shop now at glowcare.example",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Clinically proven to erase wrinkles",
+          "reason": "'Clinically proven to erase wrinkles' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP057",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Reduces dark spots by 90% in 10 days, get it now",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Reduces dark spots by 90% in 10 days",
+          "reason": "'Reduces dark spots by 90% in 10 days' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP058",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Cures pimples overnight 😍",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Cures pimples overnight",
+          "reason": "'Cures pimples overnight' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP059",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Cured my acne in 5 days, thank you GlowCare!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Cured my acne in 5 days",
+          "reason": "'Cured my acne in 5 days' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP060",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "A moisturizer that's suitable for daily use, my pick of the month",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "A moisturizer that's suitable for daily use, my pick of the month #ad"
+  },
+  {
+    "sample_id": "BP061",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Fragrance-free, lightweight, and I love it. Get yours at glowcare.example",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Fragrance-free, lightweight, and I love it. Get yours at glowcare.example #ad"
+  },
+  {
+    "sample_id": "BP062",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Replaces your prescription acne medication #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Replaces your prescription acne medication",
+          "reason": "'Replaces your prescription acne medication' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP063",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Works with my sensitive skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Works with my sensitive skin",
+          "reason": "Personal experience vs. a suitability claim."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP064",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Clears pimples in 3 days #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Clears pimples in 3 days",
+          "reason": "'Clears pimples in 3 days' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP065",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Replace your acne medicine with GlowCare cream",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Replace your acne medicine",
+          "reason": "'Replace your acne medicine' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP066",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Zero side effects, ever #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Zero side effects, ever",
+          "reason": "'Zero side effects, ever' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP067",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Obsessed with my glowy skin lately ✨ #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "glowy skin",
+          "reason": "Subjective statement; unclear if it needs substantiation."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP068",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "The best moisturizer in India #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "The best moisturizer in India",
+          "reason": "'The best moisturizer in India' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP069",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Anti-aging miracle in a jar #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Anti-aging miracle in a jar",
+          "reason": "'Anti-aging miracle in a jar' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP070",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Day 10 of using GlowCare cream in my routine #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP071",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Suitable for daily use, and I use it every night. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP072",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Hydrates skin all day. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Hydrates skin all day",
+          "reason": "Hydration duration is not an approved fact."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP073",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Better than my old moisturizer. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Better than my old moisturizer",
+          "reason": "Comparative opinion; unclear if it needs substantiation."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP074",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Skin feels healthier in a week. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "healthier in a week",
+          "reason": "Soft timeframe claim; likely unsupported."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP075",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Repairs your skin barrier in 24 hours, shop now",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Repairs your skin barrier in 24 hours",
+          "reason": "'Repairs your skin barrier in 24 hours' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP076",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "100% natural and chemical-free #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "100% natural and chemical-free",
+          "reason": "'100% natural and chemical-free' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP077",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Honest take: I like how it feels on my skin. Your experience may differ. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP078",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Gentle on skin. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Gentle on skin",
+          "reason": "Mildness is not an approved fact; could be read as a safety claim."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP079",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "#sponsored Supports healthy-looking skin.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP080",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Gifted by GlowCare, it fixed my eczema!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "fixed my eczema",
+          "reason": "'fixed my eczema' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP081",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Visible results, fast! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Visible results, fast",
+          "reason": "Vague results claim with an implied timeframe; no approved fact supports it."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP082",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Works on every skin type, no exceptions #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Works on every skin type, no exceptions",
+          "reason": "'Works on every skin type, no exceptions' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP083",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Unboxing my GlowCare order today! #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP084",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Night routine ft. GlowCare 🌙",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Night routine ft. GlowCare 🌙 #ad"
+  },
+  {
+    "sample_id": "BP085",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Ad: Supports healthy-looking skin.",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Ad: Supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP086",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Texture check: lightweight and fragrance-free 😍 #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP087",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Morning routine: cleanser, GlowCare cream, sunscreen ☀️ #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP088",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Treats rosacea and psoriasis #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Treats rosacea and psoriasis",
+          "reason": "'Treats rosacea and psoriasis' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP089",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Treats psoriasis naturally!",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Treats psoriasis naturally",
+          "reason": "'Treats psoriasis naturally' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP090",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Sharing my night routine with GlowCare cream. Supports healthy-looking skin 🌙 #AD",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP091",
+    "split": "heldout",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Our serum heals sun damage 🔥",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "heals sun damage",
+          "reason": "'heals sun damage' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP092",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "My honest review of GlowCare cream: lightweight and fragrance-free",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "My honest review of GlowCare cream: lightweight and fragrance-free #ad"
+  },
+  {
+    "sample_id": "BP093",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Supports healthy-looking skin 🌿 Link in bio #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP094",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Removes wrinkles permanently. Use code GLOW10",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "Removes wrinkles permanently",
+          "reason": "'Removes wrinkles permanently' is not present in the approved facts list."
+        },
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP095",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "A fragrance-free daily moisturizer I actually enjoy using. #ad #skincare",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP096",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "New in my skincare shelf: GlowCare Daily Moisturizer #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "compliant",
+      "findings": [],
+      "needs_human_review": false
+    },
+    "suggested_fix": null
+  },
+  {
+    "sample_id": "BP097",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Perfect for all skin types. #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "review",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "ambiguous_claim",
+          "evidence_excerpt": "Perfect for all skin types",
+          "reason": "Broader than the approved 'suitable for daily use'."
+        }
+      ],
+      "needs_human_review": true
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP098",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Unboxing the GlowCare PR package 📦",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Unboxing the GlowCare PR package 📦 #ad"
+  },
+  {
+    "sample_id": "BP099",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "This cream heals eczema fast #ad",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "C-02",
+          "category": "unsupported_claim",
+          "evidence_excerpt": "heals eczema fast",
+          "reason": "'heals eczema fast' is not present in the approved facts list."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Our cream supports healthy-looking skin. #ad"
+  },
+  {
+    "sample_id": "BP100",
+    "split": "dev",
+    "brand": {
+      "brand_id": "glowcare",
+      "name": "GlowCare"
+    },
+    "post_text": "Supports healthy-looking skin 🌿",
+    "guidelines": [
+      {
+        "rule_id": "C-02",
+        "description": "Only claims from the approved facts list may be used."
+      },
+      {
+        "rule_id": "D-01",
+        "description": "Promotional posts must include #ad."
+      }
+    ],
+    "approved_facts": [
+      "Supports healthy-looking skin.",
+      "Lightweight, fragrance-free daily moisturizer.",
+      "Suitable for daily use."
+    ],
+    "expected_result": {
+      "label": "violation",
+      "findings": [
+        {
+          "rule_id": "D-01",
+          "category": "missing_disclosure",
+          "evidence_excerpt": null,
+          "reason": "The promotional post does not include #ad."
+        }
+      ],
+      "needs_human_review": false
+    },
+    "suggested_fix": "Supports healthy-looking skin 🌿 #ad"
+  }
+]

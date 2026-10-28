@@ -1,0 +1,38 @@
+{
+  "brand_id": "glowcare",
+  "name": "GlowCare (fictional demo brand)",
+  "rules": [
+    {
+      "rule_id": "C-02",
+      "category": "claims",
+      "description": "Only claims from the approved facts list may be used.",
+      "check_type": "approved_fact_check"
+    },
+    {
+      "rule_id": "D-01",
+      "category": "disclosure",
+      "description": "Promotional posts must include #ad.",
+      "check_type": "required_disclosure"
+    }
+  ],
+  "approved_facts": [
+    {
+      "fact_id": "AF-001",
+      "text": "Supports healthy-looking skin.",
+      "status": "approved",
+      "source": "BrandProof playbook"
+    },
+    {
+      "fact_id": "AF-002",
+      "text": "Lightweight, fragrance-free daily moisturizer.",
+      "status": "approved",
+      "source": "illustrative - confirm with team"
+    },
+    {
+      "fact_id": "AF-003",
+      "text": "Suitable for daily use.",
+      "status": "approved",
+      "source": "illustrative - confirm with team"
+    }
+  ]
+}

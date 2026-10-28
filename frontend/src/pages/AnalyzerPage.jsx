@@ -49,7 +49,7 @@ function readSubmissionId(response) {
 function normalizeAnalysis(response) {
   const result = response?.analysis || response?.data?.analysis || response?.data || response
   const allFindings = Array.isArray(result?.findings) ? result.findings : []
-  const ruleFindings = allFindings.filter((finding) => !['gemini', 'llm'].includes(String(finding.source || '').toLowerCase()))
+  const ruleFindings = allFindings.filter((finding) => !['gemini', 'llm', 'ml'].includes(String(finding.source || '').toLowerCase()))
   const geminiFindings = Array.isArray(result?.gemini_findings)
     ? result.gemini_findings
     : allFindings.filter((finding) => ['gemini', 'llm'].includes(String(finding.source || '').toLowerCase()))
@@ -101,6 +101,9 @@ export default function AnalyzerPage() {
   const referencedGuidelines = useMemo(() => {
     const seen = new Set()
     return findings.filter((finding) => {
+      const source = String(finding.source || '').toLowerCase()
+      const sourceType = String(finding.source_type || '').toLowerCase()
+      if (source === 'ml' || sourceType === 'ml') return false
       const id = finding.rule_code || finding.rule_id || finding.guideline_id
       if (!id || seen.has(id)) return false
       seen.add(id)

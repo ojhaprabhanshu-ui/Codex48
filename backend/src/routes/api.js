@@ -1,7 +1,10 @@
 import { Router } from 'express'
 import { pool, inTransaction } from '../db/pool.js'
-import { runRuleEngine } from '../services/ruleEngine.js'
-import { analyzeWithAI, validateAIResult } from '../services/aiBridge.js'
+import { runDeterministicRules } from '../services/ruleEngine.js'
+import { analyzeWithAI } from '../services/aiBridge.js'
+import { validateCitations } from '../services/citationValidator.js'
+import { reviewWithGemini } from '../services/geminiReview.js'
+import { mergeAnalysisResults } from '../services/analysisResults.js'
 import { asyncHandler, HttpError, parseId } from '../utils/http.js'
 
 const router = Router()
@@ -120,24 +123,34 @@ router.post('/submissions/:id/analyze', asyncHandler(async (req, res) => {
     }
     const { rows: guidelineRows } = await client.query('SELECT * FROM guidelines WHERE brand_id=$1 AND active=true ORDER BY id', [submission.brand_id])
     const guidelines = guidelineRows.map(guidelineView)
-    const ruleFindings = runRuleEngine(submission.content, guidelines, submission.content_type)
-    const ai = await analyzeWithAI({ content: submission.content, guidelines, ruleFindings })
-    const aiResult = ai.available ? validateAIResult(ai.data, submission.content, guidelines) : { findings: [], risk: null, rewrite: null }
-    const findings = [...ruleFindings, ...aiResult.findings]
+    const deterministicFindings = runDeterministicRules(submission.content, guidelines, submission.content_type)
+    const mlResult = await analyzeWithAI({ content: submission.content, guidelines, ruleFindings: deterministicFindings })
+    const geminiResult = await reviewWithGemini({ content: submission.content, guidelines, ruleFindings: deterministicFindings })
+    const geminiFindings = geminiResult.available
+      ? validateCitations(geminiResult.findings, submission.content, guidelines)
+      : []
+    const analysis = mergeAnalysisResults({
+      content: submission.content,
+      guidelines,
+      deterministicFindings,
+      geminiFindings,
+      geminiResult,
+      mlResult,
+    })
+    const { findings, persistedFindings, warnings, mlRisk, suggestedRewrite } = analysis
     const version = submission.analysis_version + 1
-    const rewrite = aiResult.rewrite || submission.content
+    const rewrite = suggestedRewrite || submission.content
     await client.query('DELETE FROM findings WHERE submission_id=$1', [id])
-    for (const finding of findings) await client.query(
-      `INSERT INTO findings (submission_id, analysis_version, rule_code, source, category, severity, quoted_span, start_idx, end_idx, explanation, suggestion, advisory)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
-      [id, version, finding.rule_code, finding.source, finding.category, finding.severity, finding.quoted_span, finding.start_idx, finding.end_idx, finding.explanation, finding.suggestion, finding.advisory],
+    for (const finding of persistedFindings) await client.query(
+      'INSERT INTO findings (submission_id, analysis_version, rule_code, source, source_type, category, severity, quoted_span, start_idx, end_idx, explanation, suggestion, advisory) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',
+      [id, version, finding.rule_code, finding.source, finding.source_type, finding.category, finding.severity, finding.quoted_span, finding.start_idx, finding.end_idx, finding.explanation, finding.suggestion, finding.advisory],
     )
     const { rows: updated } = await client.query(
       `UPDATE submissions SET analysis_version=$2, status='analyzed', ml_risk_json=$3,
        suggested_rewrite=$4, updated_at=now() WHERE id=$1 RETURNING *`,
-      [id, version, aiResult.risk === null ? null : JSON.stringify(aiResult.risk), rewrite],
+      [id, version, mlRisk === null ? null : JSON.stringify(mlRisk), rewrite],
     )
-    return { submission: updated[0], findings, warnings: ai.warning ? [{ code: 'AI_UNAVAILABLE', message: ai.warning }] : [] }
+    return { submission: updated[0], findings, warnings }
   })
   const guidelines = await getGuidelines(result.submission.brand_id)
   const enriched = result.findings.map((finding) => {
@@ -221,3 +234,5 @@ router.post('/reviews/:id/decision', asyncHandler(async (req, res) => {
 }))
 
 export default router
+
+
